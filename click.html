@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Love</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+    <header>
+        <h1>FOR MANCHEY</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Letter</a>
+            <a href="#">Music</a>
+            <a href="#">Video</a>
+        </nav>
+    </header>
+    
+    <main>
+
+        <h2 style="margin-top: 90px;">Welcome to my website for you.</h2>
+        <p style="color: rgb(91, 90, 90); margin-bottom: 40px;"> bringing you something special and fun.</p>
+
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide">
+                    <img src="/1.jpg" alt="Image 1">
+                </div>
+                <div class="slide">
+                    <img src="/2.jpg" alt="Image 2">
+                </div>
+                <div class="slide">
+                    <img src="/3.jpg" alt="Image 3">
+                </div>
+                <div class="slide">
+                    <img src="/4.jpg" alt="Image 4">
+                </div>
+                <div class="slide">
+                    <img src="/5.jpg" alt="Image 5">
+                </div>
+                <div class="slide">
+                    <img src="/6.jpg" alt="Image 6">
+                </div>
+                <div class="slide">
+                    <img src="/7.jpg" alt="Image 7">
+                </div>
+            </div>
+            <div class="slider-buttons">
+                <button class="slider-button" onclick="previousSlide()">❮</button>
+                <button class="slider-button" onclick="nextSlide()">❯</button>
+            </div>
+        </div>
+
+        <div class="letter-head">
+            <h2 style="margin-bottom: 0px;">LETTER 💌</h2>
+            <p style="color: rgb(91, 90, 90); margin-bottom: 40px;"> valentine's message for you.</p>
+
+            <div class="letter">
+                <p>
+                    <span style="font-weight: bold;">My beloved Manchey,</span>
+                    <br>
+                    <br>
+                    <span style="line-height: 4; font-weight: bold;">Happy Valentine's Day!</span>
+                    <br>
+                    There are moments in life that change everything, and meeting you was one of those moments for me. 
+                    Since then, it feels like everything in my life has shifted. 
+                    You’ve become such an important part of me that I can’t imagine my life without you anymore. 
+                    It’s like all the pieces finally fell into place the moment you came into my world. 
+                    I loved you from the moment I saw you, I love you more with every passing day, and 
+                    I will love you for all the days of my life.
+                </p>
+                <p>
+                    But love isn’t just about the good times, it’s about sticking together through the hard ones too. 
+                    We’ve had our struggles, times when everything felt like it was slipping through our fingers. 
+                    But here’s what I’ve learned: love isn’t about perfection. It’s about showing up, even when it’s hard. 
+                    I believe in us. In the way we’ve always come back to each other, in the way we love and care for one another, even in silence. 
+                    I’m here, and I’m not ready to lose the chance to build something beautiful with you. 
+                    You are the one thing I want to hold onto, no matter what.
+                </p>
+                <p>
+                    When I think about the future, I see you. I see us. 
+                    I see a life filled with quiet mornings and loud laughter, with adventures that take us to places we’ve only dreamed of. 
+                    I see us growing old together, your hand in mine, your smile still the brightest thing in my world. 
+                    I see the challenges too, because life isn’t perfect. But I also see the strength we’ve built together, 
+                    the love that has carried us through every storm. With you, I’m not afraid of what’s ahead. 
+                    With you, I feel like I can face anything.
+                </p>
+                <p>
+                    You are my home, my safe place, and my biggest adventure. 
+                    Because of you, I believe in love, second chances, and forever. 
+                    I promise to love you deeply, faithfully, and unconditionally.
+                    <br>
+                    <br>
+                    With all that I am, and all that I ever will be, I love you.
+                    <br><br>
+                    <span style="font-weight: bold;">Yours always,
+                    <br>
+                    Motu.
+                    </span>
+                </p>
+
+            </div>
+        </div>
+
+        <div class="mp3">
+            <h2 style="margin:0px 40px; margin-top: 64px;">Music 🎵</h2>
+            <p style="color: rgb(91, 90, 90); margin-bottom: 40px;"> music to create an ambience.</p>
+
+            <div class="music-player">
+                <div class="title">blue</div>
+                <div class="subtitle">yung kai</div>
+                <div class="line"></div>
+                <div class="controls">
+                    <button class="prev-btn" onclick="audio.currentTime -= 10">⏮</button>
+                    <button class="play-btn" onclick="togglePlay()">▶</button>
+                    <button class="next-btn" onclick="audio.currentTime += 10">⏭</button>
+                </div>
+                <!-- Add audio element here -->
+                <audio id="myAudio">
+                    <source src="/blue.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+
+        <div class="video">
+            <h2 style="margin: 40px; margin-top: 64px; margin-bottom: 12px;">Video 📹</h2>
+            <p style="color: rgb(91, 90, 90); margin-bottom: 40px;"> my favourite video of us.</p>
+
+            <video width="320" height="240" controls>
+                <source src="/video.mp4" type="video/mp4">
+            </video> 
+        </div>
+
+        <div class="from">
+            <img src="/8.jpeg" alt="me">
+            <h3>Parbat Sunuwar</h3>
+            <p>your motu</p>
+        </div>
+
+
+   <main>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let slideInterval; // For storing the interval
+
+        function updateSlides() {
+            // Remove active class from all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            // Add active class to current slide
+            slides[currentSlide].classList.add('active');
+            
+            // Calculate the transform
+            const slideWidth = slides[0].offsetWidth;
+            const transform = -currentSlide * slideWidth;
+            
+            document.querySelector('.slider').style.transform = `translateX(${transform}px)`;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlides();
+        }
+
+        function previousSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlides();
+        }
+
+        // Auto slide function
+        function startAutoSlide() {
+            slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        }
+
+        // Stop auto slide on user interaction
+        function stopAutoSlide() {
+            clearInterval(slideInterval);
+        }
+
+        // Restart auto slide after user interaction
+        function restartAutoSlide() {
+            stopAutoSlide();
+            startAutoSlide();
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            updateSlides();
+            startAutoSlide();
+        });
+
+        window.addEventListener('resize', updateSlides);
+
+        // Optional: Stop auto-sliding when user hovers over the slider
+        document.querySelector('.slider-container').addEventListener('mouseenter', stopAutoSlide);
+        document.querySelector('.slider-container').addEventListener('mouseleave', startAutoSlide);
+
+        // Restart auto-slide timer when buttons are clicked
+        document.querySelectorAll('.slider-button').forEach(button => {
+            button.addEventListener('click', restartAutoSlide);
+        });
+    </script>
+
+    <script>
+        const audio = document.getElementById('myAudio');
+        const playBtn = document.querySelector('.play-btn');
+        let isPlaying = false;
+
+        function togglePlay() {
+            if (isPlaying) {
+                audio.pause();
+                playBtn.textContent = '▶';
+            } else {
+                audio.play();
+                playBtn.textContent = '⏸';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Auto play when page loads (optional)
+        window.onload = function() {
+            var playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    isPlaying = true;
+                    playBtn.textContent = '⏸';
+                }).catch(error => {
+                    console.log("Autoplay prevented");
+                });
+            }
+        }
+
+        // Pause music when video starts playing
+        const video = document.querySelector('video');
+        video.addEventListener('play', () => {
+            if (isPlaying) {
+                audio.pause();
+                playBtn.textContent = '▶';
+                isPlaying = false;
+            }
+        });
+    </script>
+
+
+</body>
+</html>
